@@ -1,17 +1,13 @@
-﻿namespace Maui.PasswordMeter;
+﻿using Maui.PasswordMeter.ViewModels;
+
+namespace Maui.PasswordMeter;
 
 public partial class MainPage : ContentPage
 {
-	
-	public MainPage()
+    public MainPage(MainViewModel mainViewModel)
 	{
+        BindingContext = mainViewModel;
 		InitializeComponent();
-	}
-
-	public void OnValueChanged(object sender, ValueChangedEventArgs e)
-    {
-		var strength = (double)e.NewValue * 100;
-		ValueLabel.Text = strength.ToString();
 	}
 }
 

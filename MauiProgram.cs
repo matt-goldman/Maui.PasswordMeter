@@ -1,4 +1,7 @@
-﻿namespace Maui.PasswordMeter;
+﻿using Maui.PasswordMeter.Services;
+using Maui.PasswordMeter.ViewModels;
+
+namespace Maui.PasswordMeter;
 
 public static class MauiProgram
 {
@@ -11,6 +14,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<MainViewModel>();
+		builder.Services.AddSingleton<PasswordValidationService>();
 
 		return builder.Build();
 	}

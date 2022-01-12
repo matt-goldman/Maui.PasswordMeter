@@ -2,10 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.PasswordMeter.MainPage"
              xmlns:converters="clr-namespace:Maui.PasswordMeter.Converters"
+             xmlns:mctbehaviors="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              BackgroundColor="{DynamicResource SecondaryColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:StrengthToColorConverter x:Key="StrengthToColor"/>
+            <converters:BoolToColorConverter x:Key="BoolToColor"/>
+            <converters:BoolToSmileyConverter x:Key="BoolToSmiley" />
+            <converters:LengthToSmileyConverter x:Key="LengthToSmiley"/>
+            <converters:LengthToColorConverter x:Key="LengthToColor"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -20,19 +25,84 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Slider x:Name="StrengthSlider"
-                    Grid.Row="1"
-                    Minimum="0"
-                    Maximum="1"
-                    ValueChanged="OnValueChanged"/>
+            <Entry x:Name="PasswordEntry"
+                   Grid.Row="1"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   Placeholder="Enter a password">
+                <Entry.Behaviors>
+                    <mctbehaviors:EventToCommandBehavior EventName="TextChanged"
+                                                         Command="{Binding ValidatePasswordCommand}"/>
+                </Entry.Behaviors>
+            </Entry>
 
-            <ProgressBar BindingContext="{x:Reference StrengthSlider}"
+            <ProgressBar x:Name="StrengthMeter"
                          Grid.Row="2"
-                         Progress="{Binding Value}"
-                         ProgressColor="{Binding Value, Converter={StaticResource StrengthToColor}}" />
+                         Progress="{Binding PasswordStrength}"
+                         ProgressColor="{Binding PasswordStrength, Converter={StaticResource StrengthToColor}}" />
 
-            <Label x:Name="ValueLabel"
-                   Grid.Row="3" />
+            <Grid x:Name="RulesStack"
+                  Grid.Row="3"
+                  RowSpacing="10"
+                  RowDefinitions="*,*,*,*,*"
+                  ColumnDefinitions="2*,8*">
+                
+                <!--contains lower-->
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="{Binding validation.ContainsLower, Converter={StaticResource BoolToSmiley}}"
+                       TextColor="{Binding validation.ContainsLower, Converter={StaticResource BoolToColor}}"/>
+
+                <Label Grid.Row="0"
+                       Grid.Column="1"
+                       Text="Contains lowercase characters"
+                       TextColor="{Binding validation.ContainsLower, Converter={StaticResource BoolToColor}}"/>
+
+                <!--contains upper-->
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="{Binding validation.ContainsUpper, Converter={StaticResource BoolToSmiley}}"
+                       TextColor="{Binding validation.ContainsUpper, Converter={StaticResource BoolToColor}}"/>
+
+                <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="Contains uppercase characters"
+                       TextColor="{Binding validation.ContainsUpper, Converter={StaticResource BoolToColor}}"/>
+
+                <!--contains number-->
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Text="{Binding validation.ContainsNumber, Converter={StaticResource BoolToSmiley}}"
+                       TextColor="{Binding validation.ContainsNumber, Converter={StaticResource BoolToColor}}"/>
+
+                <Label Grid.Row="2"
+                       Grid.Column="1"
+                       Text="Contains number"
+                       TextColor="{Binding validation.ContainsNumber, Converter={StaticResource BoolToColor}}"/>
+
+                <!--contains symbol-->
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Text="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToSmiley}}"
+                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"/>
+
+                <Label Grid.Row="3"
+                       Grid.Column="1"
+                       Text="Contains non-alphanumeric characters"
+                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"/>
+
+                <!--length-->
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       Text="{Binding validation.Length, Converter={StaticResource LengthToSmiley}}"
+                       TextColor="{Binding validation.Length, Converter={StaticResource LengthToColor}}"/>
+
+                <Label Grid.Row="4"
+                       Grid.Column="1"
+                       Text="{Binding PasswordLengthString}"
+                       TextColor="{Binding validation.Length, Converter={StaticResource LengthToColor}}"/>
+
+            </Grid>
         </Grid>
     </ScrollView>
 </ContentPage>
