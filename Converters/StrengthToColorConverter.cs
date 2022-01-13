@@ -14,12 +14,6 @@ public class StrengthToColorConverter : IValueConverter
         if (Enumerable.Range(35, 34).Contains(strength))
             return Color.FromArgb("#F78D1A");
 
-        //if (Enumerable.Range(55, 15).Contains(strength))
-        //    return Color.FromArgb("#DBDE1F");
-
-        //if (Enumerable.Range(70, 20).Contains(strength))
-        //    return Color.FromArgb("#ACEB2E");
-
         if (Enumerable.Range(65, 40).Contains(strength))
             return Color.FromArgb("#06F602");
 

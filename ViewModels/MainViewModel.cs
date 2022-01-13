@@ -20,15 +20,6 @@ public class MainViewModel : INotifyPropertyChanged
 
     public PasswordValidationModel validation { get; set; }
 
-    //private string[] UpdateProperties =
-    //{
-    //    nameof(PasswordStrength),
-    //    nameof(PasswordLengthString),
-    //    nameof(validation.ContainsNumber),
-    //    nameof(validation.ContainsString),
-    //    na
-    //}
-
     public MainViewModel(PasswordValidationService passwordValidationService)
     {
         _passwordValidationService = passwordValidationService;
@@ -46,8 +37,6 @@ public class MainViewModel : INotifyPropertyChanged
         PasswordLengthString = $"Password length: {validation.Length}";
 
         RaisePropertyChanged(nameof(PasswordStrength), nameof(validation), nameof(PasswordLengthString));
-
-        Console.WriteLine($"Password strength: {PasswordStrength:0:###}");
     }
 
     protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

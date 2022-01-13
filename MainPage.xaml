@@ -3,6 +3,7 @@
              x:Class="Maui.PasswordMeter.MainPage"
              xmlns:converters="clr-namespace:Maui.PasswordMeter.Converters"
              xmlns:mctbehaviors="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:controls="clr-namespace:Maui.PasswordMeter.Controls"
              BackgroundColor="{DynamicResource SecondaryColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -36,10 +37,8 @@
                 </Entry.Behaviors>
             </Entry>
 
-            <ProgressBar x:Name="StrengthMeter"
-                         Grid.Row="2"
-                         Progress="{Binding PasswordStrength}"
-                         ProgressColor="{Binding PasswordStrength, Converter={StaticResource StrengthToColor}}" />
+            <controls:PasswordMeter Strength="{Binding PasswordStrength}"
+                                    Grid.Row="2"/>
 
             <Grid x:Name="RulesStack"
                   Grid.Row="3"

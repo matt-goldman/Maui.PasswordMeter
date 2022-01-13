@@ -1,5 +1,4 @@
 ﻿using Maui.PasswordMeter.Models;
-using System.Text.Json;
 
 namespace Maui.PasswordMeter.Services;
 
@@ -32,8 +31,6 @@ public class PasswordValidationService
         validation.StrengthScore -= LengthPenalty(password);
 
         validation.Length = password.Length;
-
-        Console.WriteLine(JsonSerializer.Serialize(validation));
 
         return validation;
     }
