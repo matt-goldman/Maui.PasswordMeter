@@ -10,4 +10,4 @@ Works on iOS, macOS and Android.
 
 ----------------------
 
-![MauiPasswordMeter](https://github.com/matt-goldman/Maui.PasswordMeter/raw/main/assets/MauiPassword/MauiPassword.gif | width=300)
+![MauiPasswordMeter](https://github.com/matt-goldman/Maui.PasswordMeter/raw/main/assets/MauiPassword/MauiPassword.gif)
