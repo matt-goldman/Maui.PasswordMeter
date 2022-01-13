@@ -9,15 +9,17 @@ public class LengthToSmileyConverter : IValueConverter
         var length = (int)value;
             
         if (length >= 9 && length < 12)
-            return "🙁";
+            return Smileys.Meh;
         if (length >= 12 && length < 16)
-            return "😐";
+            return Smileys.Smile;
         if (length >= 16 && length < 20)
-            return "🙂";
-        if (length >= 20)
-            return "😀";
+            return Smileys.SmileBeam;
+        if (length >= 20 && length < 24)
+            return Smileys.Grin;
+        if (length >= 24)
+            return Smileys.GrinStars;
 
-        return "🙁";
+        return Smileys.Frown;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

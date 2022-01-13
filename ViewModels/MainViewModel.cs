@@ -18,7 +18,7 @@ public class MainViewModel : INotifyPropertyChanged
 
     private readonly PasswordValidationService _passwordValidationService;
 
-    public PasswordValidationModel validation { get; set; }
+    public PasswordValidationModel validation { get; set; } = new PasswordValidationModel();
 
     public MainViewModel(PasswordValidationService passwordValidationService)
     {

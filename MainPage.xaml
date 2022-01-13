@@ -50,7 +50,10 @@
                 <Label Grid.Row="0"
                        Grid.Column="0"
                        Text="{Binding validation.ContainsLower, Converter={StaticResource BoolToSmiley}}"
-                       TextColor="{Binding validation.ContainsLower, Converter={StaticResource BoolToColor}}"/>
+                       TextColor="{Binding validation.ContainsLower, Converter={StaticResource BoolToColor}}"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       FontFamily="FontAwesome"/>
 
                 <Label Grid.Row="0"
                        Grid.Column="1"
@@ -61,7 +64,10 @@
                 <Label Grid.Row="1"
                        Grid.Column="0"
                        Text="{Binding validation.ContainsUpper, Converter={StaticResource BoolToSmiley}}"
-                       TextColor="{Binding validation.ContainsUpper, Converter={StaticResource BoolToColor}}"/>
+                       TextColor="{Binding validation.ContainsUpper, Converter={StaticResource BoolToColor}}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Large"
+                       FontFamily="FontAwesome"/>
 
                 <Label Grid.Row="1"
                        Grid.Column="1"
@@ -72,7 +78,10 @@
                 <Label Grid.Row="2"
                        Grid.Column="0"
                        Text="{Binding validation.ContainsNumber, Converter={StaticResource BoolToSmiley}}"
-                       TextColor="{Binding validation.ContainsNumber, Converter={StaticResource BoolToColor}}"/>
+                       TextColor="{Binding validation.ContainsNumber, Converter={StaticResource BoolToColor}}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Large"
+                       FontFamily="FontAwesome"/>
 
                 <Label Grid.Row="2"
                        Grid.Column="1"
@@ -83,18 +92,25 @@
                 <Label Grid.Row="3"
                        Grid.Column="0"
                        Text="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToSmiley}}"
-                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"/>
+                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Large"
+                       FontFamily="FontAwesome"/>
 
                 <Label Grid.Row="3"
                        Grid.Column="1"
                        Text="Contains non-alphanumeric characters"
-                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"/>
+                       TextColor="{Binding validation.ContainsSymbol, Converter={StaticResource BoolToColor}}"
+                       FontFamily="FontAwesome"/>
 
                 <!--length-->
                 <Label Grid.Row="4"
                        Grid.Column="0"
                        Text="{Binding validation.Length, Converter={StaticResource LengthToSmiley}}"
-                       TextColor="{Binding validation.Length, Converter={StaticResource LengthToColor}}"/>
+                       TextColor="{Binding validation.Length, Converter={StaticResource LengthToColor}}"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Large"
+                       FontFamily="FontAwesome"/>
 
                 <Label Grid.Row="4"
                        Grid.Column="1"

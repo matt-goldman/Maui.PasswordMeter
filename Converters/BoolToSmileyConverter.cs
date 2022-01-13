@@ -9,9 +9,9 @@ public class BoolToSmileyConverter : IValueConverter
         var isTrue = (bool)value;
 
         if (isTrue)
-            return "🙂";
+            return Smileys.Smile;
 
-        return "🙁";
+        return Smileys.Frown;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
